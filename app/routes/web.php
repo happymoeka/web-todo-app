@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+//use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('todo', 'App\Http\Controllers\TodoController');
+Route::put('todo/done/{todo}', [App\Http\Controllers\TodoController::class, 'done'])->name('todo.done');
+Route::put('todo/undone/{todo}', [App\Http\Controllers\TodoController::class, 'undone'])->name('todo.undone');
